@@ -20,11 +20,13 @@ export function useFaceTracking() {
         console.log('👀 Starting face tracking...')
 
         const detect = async () => {
+            console.log('Detect loop running');
+
             if (!video || video.paused || video.ended) return
 
             const result = await faceapi
                 .detectSingleFace(video, new faceapi.TinyFaceDetectorOptions())
-                .withFaceLandmarks(true)
+                .withFaceLandmarks()
 
             if (result) {
                 const nose = result.landmarks.getNose()
@@ -48,8 +50,6 @@ export function useFaceTracking() {
                 if (canvas) {
                     const dims = faceapi.matchDimensions(canvas, video, true)
                     const resized = faceapi.resizeResults(result, dims)
-                    faceapi.draw.drawFaceLandmarks(canvas, resized)
-
                     const ctx = canvas.getContext('2d')
                     if (ctx) {
                         ctx.clearRect(0, 0, canvas.width, canvas.height)

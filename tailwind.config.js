@@ -1,12 +1,12 @@
-module.exports = {
-    content: [
-        './components/**/*.{vue,js}',
-        './layouts/**/*.vue',
-        './pages/**/*.vue',
-        './app.vue',
-    ],
-    theme: {
-        extend: {},
-    },
-    plugins: [],
+export default {
+  content: [
+    './pages/**/*.{vue,js,ts}',
+    './components/**/*.{vue,js,ts}',
+    './layouts/**/*.{vue,js,ts}',
+    './app.vue',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 }
